@@ -13,6 +13,9 @@ filme_3 = input()
 
 cansaco = 0
 
+if(filme_1 == 'Vingadores: Ultimato' or filme_2 == 'Vingadores: Ultimato' or filme_3 == 'Vingadores: Ultimato'):
+    cansaco = 2
+
 if(filme_1 == 'Coringa' or filme_1 == 'Batman vs Superman' or filme_1 == 'O Cavaleiro das Trevas'): 
     print('Algo de errado não está certo!')
 else:
@@ -29,6 +32,7 @@ else:
                 print('Miles: Achei o easter egg!!!')
                 nome_filme = input()
                 duracao = int(input())
+                cansaco += 1
                 if(cansaco >= 2 and duracao >= 135):
                     print('Miles: A mimir')
                 elif(cansaco >= 2) and (duracao >= 120 and duracao <= 135):
@@ -36,12 +40,12 @@ else:
                 elif(cansaco < 2 or duracao < 120):
                     print(f'Peter: {nome_filme} é o melhor filme do homem aranha, 10/10')
         
-                if(duracao == 180 ):
-                    cansaco += 2
+                
         else:
             print('Miles: Achei o easter egg!!!')
             nome_filme = input()
             duracao = int(input())
+            cansaco += 1
             if(cansaco >= 2 and duracao >= 135):
                 print('Miles: A mimir')
             elif(cansaco >= 2) and (duracao >= 120 and duracao <= 135):
@@ -49,10 +53,10 @@ else:
             elif(cansaco < 2 or duracao < 120):
                 print(f'Peter: {nome_filme} é o melhor filme do homem aranha, 10/10')
             
-            if(duracao == 180 ):
-                cansaco += 2
+            
     else:
         print('Miles: Achei o easter egg!!!')
+        cansaco += 1
         nome_filme = input()
         duracao = int(input())
         if(cansaco >= 2 and duracao >= 135):
@@ -62,8 +66,7 @@ else:
         elif(cansaco < 2 or duracao < 120):
             print(f'Peter: {nome_filme} é o melhor filme do homem aranha, 10/10')
             
-        if(duracao == 180 ):
-            cansaco += 2
+        
 
         
 
