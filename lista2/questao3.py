@@ -36,6 +36,7 @@ while(estoque >= 0 and frase_informada != caso_4):
                 estoque -= total_garrafas
                 if(estoque < 0):
                     print(f'Prometemos distribuir {abs(estoque)} garrafas e zeramos')
+
     
 
                 
@@ -43,6 +44,8 @@ while(estoque >= 0 and frase_informada != caso_4):
 else:
     if(estoque < 0):
         print('Por questões logísticas, teremos que acabar com os jogos...')
+        print(f'Estamos devendo {abs(estoque)} garrafas para os alunos...')
+
         if(frase_informada == caso_4):
             print(f'Estamos devendo {abs(estoque)} garrafas para os alunos...')
     elif(frase_informada == caso_4):
