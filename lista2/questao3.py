@@ -8,8 +8,9 @@ caso_4 = 'O InterCIn acabou!!! Vamos ver nosso estoque de bebidas'
 estoque = 20
 
 while(estoque >= 0 and frase_informada != caso_4):
-    frase_informada = input()
 
+    frase_informada = input()
+    
     if(frase_informada == caso_1):
         jogadores_saida = int(input())
         if(estoque < jogadores_saida):
@@ -34,7 +35,9 @@ while(estoque >= 0 and frase_informada != caso_4):
 
                 estoque -= total_garrafas
                 if(estoque < 0):
-                    print(f'Prometemos distribuir {total_garrafas} garrafas e zeramos')
+                    print(f'Prometemos distribuir {abs(estoque)} garrafas e zeramos')
+    
+
                 
 
 else:
