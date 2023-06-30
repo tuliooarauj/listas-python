@@ -3,9 +3,11 @@ quantidade_jogos = int(input())
 time_vencedor = ''
 time_perdedor = ''
 total_pontos = 0
+pontos_manchester = 0
+pontos_spicin = 0
 
 for i in range(quantidade_jogos):
-    if(total_pontos >= 0):
+    if(pontos_manchester >= 0 and pontos_spicin >= 0):
         nome_time = input()
         numero_gols = int(input())
         numero_chutes_gol = int(input())
@@ -19,40 +21,32 @@ for i in range(quantidade_jogos):
             total_pontos += 3
 
         if(cartoes_vermelho >= cartoes_amarelo):
-            total_pontos -= 3
+            total_pontos -= 3      
 
-        if(i == 0):
-            time_vencedor = nome_time
-            time_perdedor = nome_time
-            utlima_pontuacao = total_pontos
-            pontuacao_vencedor = total_pontos
-            pontuacao_perdedor = total_pontos
+        for _ in range(nome_time == 'Manchester CIn'):
+            pontos_manchester += total_pontos
 
-        if(total_pontos > utlima_pontuacao):
-            time_vencedor = nome_time
-            pontuacao_vencedor = total_pontos
-            utlima_pontuacao = total_pontos
+        for _ in range(nome_time == 'SpiCIn Girls'):
+            pontos_spicin += total_pontos
 
-        if(total_pontos < utlima_pontuacao): #erro aqui (ta imprimindo o que o time vencedor e perdedor é o mesmo) outro caso é qdo ta há só 1 time e ele tem pontuação positiva
-            time_perdedor = nome_time
-            pontuacao_perdedor = total_pontos
+        soma_pontuacao = pontos_spicin + pontos_manchester
 
-        if(pontuacao_vencedor != pontuacao_perdedor) and (pontuacao_vencedor > 0 and pontuacao_perdedor > 0):
-            pontuacao_vencedor += pontuacao_perdedor
-            soma_pontuacao = pontuacao_vencedor
+        if(pontos_manchester > pontos_spicin):
+            time_vencedor = 'Manchester CIn'
+            pontuacao_vencedor = pontos_manchester
+        else:
+            time_vencedor = 'SpiCIn Girls'
+            pontuacao_vencedor = pontos_spicin
 
-        if(total_pontos < 0):
-            entrou = 0
-            entrou += 1
+        if(pontos_spicin < 0 or pontos_manchester < 0):
             time_perdedor = nome_time
             print(f'O time {time_perdedor} ficou com pontuação negativa. A aposta não é segura, podemos perder nosso dinheiro.')
-
-if(quantidade_jogos == 1 and pontuacao_vencedor > 0):
-    porcentagem_time_vencedor = (utlima_pontuacao / utlima_pontuacao) * 100        
-    print(f'Com {porcentagem_time_vencedor:.2f}% dos pontos, o time {time_vencedor} pode garantir nosso dinheiro na CInBet, é uma das grandes apostas do InterCIn.')
-    
-            
-if(pontuacao_vencedor != pontuacao_perdedor) and (pontuacao_vencedor > 0 and pontuacao_perdedor > 0):
-    porcentagem_time_vencedor = (utlima_pontuacao / soma_pontuacao) * 100        
-    print(f'Com {porcentagem_time_vencedor:.2f}% dos pontos, o time {time_vencedor} pode garantir nosso dinheiro na CInBet, é uma das grandes apostas do InterCIn.')
+           
+if(pontos_manchester != pontos_spicin) and (pontos_manchester >= 0 and pontos_spicin >= 0):
+    if(quantidade_jogos == 1 and pontuacao_vencedor > 0):
+        porcentagem_time_vencedor = (pontuacao_vencedor / pontuacao_vencedor) * 100        
+        print(f'Com {porcentagem_time_vencedor:.2f}% dos pontos, o time {time_vencedor} pode garantir nosso dinheiro na CInBet, é uma das grandes apostas do InterCIn.')
+    else:
+        porcentagem_time_vencedor = (pontuacao_vencedor / soma_pontuacao) * 100        
+        print(f'Com {porcentagem_time_vencedor:.2f}% dos pontos, o time {time_vencedor} pode garantir nosso dinheiro na CInBet, é uma das grandes apostas do InterCIn.')
         
