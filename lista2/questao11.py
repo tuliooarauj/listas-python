@@ -27,6 +27,12 @@ while(time < 5):
         
         if(lane_jogador == 'Top' and entrou_top == 0):
             print(f'{nome_jogador} entrou pro time.')
+            if(nome_jogador == 'Artur'):
+                print('Ele tá meio enferrujado...')
+                cont_artur +=1
+            if(nome_jogador == 'Frej'):
+                print('Joga muito!')
+                cont_frej += 1
             relacao_top = (f'{nome_jogador} - {lane_jogador} ({elo_jogador})')
             entrou_top += 1
             entrada_top = entrada
@@ -48,6 +54,12 @@ while(time < 5):
         
         if(lane_jogador == 'Jungler' and entrou_jungler == 0):
             print(f'{nome_jogador} entrou pro time.')
+            if(nome_jogador == 'Artur'):
+                print('Ele tá meio enferrujado...')
+                cont_artur +=1
+            if(nome_jogador == 'Frej'):
+                print('Joga muito!')
+                cont_frej += 1
             relacao_jungler = (f'{nome_jogador} - {lane_jogador} ({elo_jogador})')
             entrou_jungler += 1
             entrada_jungler = entrada
@@ -71,6 +83,12 @@ while(time < 5):
 
         if(lane_jogador == 'Mid' and entrou_mid == 0):
             print(f'{nome_jogador} entrou pro time.')
+            if(nome_jogador == 'Artur'):
+                print('Ele tá meio enferrujado...')
+                cont_artur +=1
+            if(nome_jogador == 'Frej'):
+                print('Joga muito!')
+                cont_frej += 1
             relacao_mid = (f'{nome_jogador} - {lane_jogador} ({elo_jogador})')
             entrou_mid += 1
             entrada_mid = entrada
@@ -92,6 +110,12 @@ while(time < 5):
 
         if(lane_jogador == 'Adc' and entrou_adc == 0):
             print(f'{nome_jogador} entrou pro time.')
+            if(nome_jogador == 'Artur'):
+                print('Ele tá meio enferrujado...')
+                cont_artur +=1
+            if(nome_jogador == 'Frej'):
+                print('Joga muito!')
+                cont_frej += 1
             relacao_adc = (f'{nome_jogador} - {lane_jogador} ({elo_jogador})')
             entrou_adc += 1
             entrada_adc = entrada
@@ -113,6 +137,12 @@ while(time < 5):
 
         if(lane_jogador == 'Suporte' and entrou_suporte == 0):
             print(f'{nome_jogador} entrou pro time.')
+            if(nome_jogador == 'Artur'):
+                print('Ele tá meio enferrujado...')
+                cont_artur +=1
+            if(nome_jogador == 'Frej'):
+                print('Joga muito!')
+                cont_frej += 1
             relacao_suporte = (f'{nome_jogador} - {lane_jogador} ({elo_jogador})')
             entrou_suporte += 1
             entrada_suporte = entrada
@@ -132,12 +162,7 @@ while(time < 5):
             if(lane_jogador == 'Suporte' and entrou_suporte == 1):
                 print(f'{nome_jogador} não foi aceito, que pena.')
 
-        if(nome_jogador == 'Artur'):
-            print('Ele tá meio enferrujado...')
-            cont_artur +=1
-        if(nome_jogador == 'Frej'):
-            print('Joga muito!')
-            cont_frej += 1
+       
     
         time = entrou_top + entrou_jungler + entrou_mid + entrou_adc + entrou_suporte
 
