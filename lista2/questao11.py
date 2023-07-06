@@ -254,11 +254,10 @@ while(time < 5):
             elif(cont_artur == 0) and (cont_frej == 1):
                 print('A GENTE VAI GANHAR!!!')
             else:
-                if((cont_artur == 1) and (cont_frej == 1)) or ((cont_artur == 0) and (cont_frej == 0)):
-                    if(pts_time >= 18):
-                        print('A GENTE VAI GANHAR!!!')
-                    else:
-                        print('Vai dar ruim...')
+                if(pts_time >= 18):
+                    print('A GENTE VAI GANHAR!!!')
+                else:
+                    print('Vai dar ruim...')
 
                     
                 
