@@ -13,7 +13,6 @@ custo_atual = custo_maximo
 qtd_objetos_inseridos = 1
 
 condicao_parada = True
-obj_removido = False
 
 objetos_inseridos = []
 custos_inseridos = []
@@ -52,12 +51,14 @@ while condicao_parada:
 
 
         if acao_desejada == acao2:
+            obj_removido = False
             objeto_remover = input()
             for obj in objetos_inseridos:
                 if obj == objeto_remover: 
                     obj_removido = True
 
                     itens_inseridos.pop(objetos_inseridos.index(objeto_remover))
+                    relacao_itens_sem_custo.pop(objetos_inseridos.index(objeto_remover))
                     valor_removido = custos_inseridos.pop(objetos_inseridos.index(objeto_remover))
                     objetos_inseridos.remove(objeto_remover)
                     qtd_objetos_inseridos -= 1
