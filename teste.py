@@ -1,7 +1,12 @@
-produtos_vendidos = ['martelo', 'tesoura', 'chave de fenda', 'prego', 'chave estrela']
-produtos_estoque = ['martelo', 'tesoura', 'tesoura', 'martelo', 'prego', 'prego', 'martelo']
+x = []
+y = [1, 2, 3, 4, 5]
 
-removido = produtos_vendidos.pop(1)
-print(f'Item removido: {removido}')
+if x == []:
+    print('true')
+else:
+    print('false')
 
-print(produtos_vendidos)
+if y == []:
+    print('true')
+else:
+    print('false')
