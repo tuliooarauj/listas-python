@@ -33,8 +33,6 @@ elif profissao_dia  == 'Personal Trainer':
 
 itens_bolsa = relacao_prevista
 
-cont = 0
-
 condicao_parada = True
     
 while condicao_parada:
@@ -42,11 +40,14 @@ while condicao_parada:
 
     if acao_desejada == 'Sair':
         condicao_parada = False
-        print(itens_bolsa)
-        if itens_bolsa == relacao_dia:
+        itens_bolsa_sorted = sorted(itens_bolsa)
+        relacao_dia_sorted = sorted(relacao_dia)
+        print('Itens na bolsa: ', end='')
+        print(', '.join(itens_bolsa_sorted))
+        if itens_bolsa_sorted == relacao_dia_sorted:
             print('Boa Barbie, foi na correria mas tudo deu certo!')
         else:
-            for item_dia in relacao_dia:
+            for item_dia in relacao_dia: #possivel erro
                 for item in itens_bolsa:
                     qtd_esquecido = 0
                     if not item_dia == item:
@@ -56,48 +57,55 @@ while condicao_parada:
                 print(f'Oh não!! Barbie, você esqueceu de pegar {item_esquecido}!!')
 
             for item in itens_bolsa:
+                contador_itens_diferentes = 0
                 for item_dia in relacao_dia:
-                    itens_diferentes = 0
                     if not item == item_dia:
-                        item_errado = item
-                        itens_diferentes += 1
-            if itens_diferentes > 0:
-                print(f'Barbie, você esqueceu de tirar {item_errado}, você não usa ele trabalhando de {profissao_dia}')
+                        contador_itens_diferentes += 1
+                        if contador_itens_diferentes == len(relacao_dia):
+                            item_errado = item
+                            print(f'Barbie, você esqueceu de tirar {item_errado}, você não usa ele trabalhando de {profissao_dia}')           
 
     else:
         if acao_desejada == 'Adicionar':
             item_adicionado = False
             item_adicionar = input()
-            for item_dia in relacao_dia:
-                if item_dia == item_adicionar:
-                    cont += 1
+
+            for item_bolsa in itens_bolsa:
+                if item_bolsa == item_adicionar:
+                    print(f'Barbie, você já colocou {item_adicionar} na bolsa')
                     item_adicionado = True
-                    print(f'{item_adicionar} adicionado à bolsa')
-                    itens_bolsa.append(item_adicionar)
+                
+            if not item_adicionado:
+                for item_dia in relacao_dia:
+                    if item_dia == item_adicionar:
+                        item_adicionado = True
+                        print(f'{item_adicionar} adicionado à bolsa')
+                        itens_bolsa.append(item_adicionar)
 
             if not item_adicionado:    
                 print(f'Barbie, {item_adicionar} não esta na lista de itens de {profissao_dia}')
-                
-            if cont > 1:
-                for item_bolsa in itens_bolsa:
-                    if item_bolsa == item_adicionar:
-                        print(f'Barbie, você já colocou {item_adicionar} na bolsa')
+                          
             
         if acao_desejada == 'Retirar':
-            item_retirar = input()
+            item_a_retirar = input()
+            item_fora_bolsa = 0
+            item_nfaz_parte_profissao = 0
             for item_bolsa in itens_bolsa:
-                item_fora_bolsa = False
-                if item_bolsa == item_retirar:
+                if not item_a_retirar == item_bolsa: #testando se o item a retirar não está na bolsa
+                    item_fora_bolsa +=1 
+                else: #o item está na bolsa
                     for item_dia in relacao_dia:
-                        if item_dia == item_retirar:
-                            item_a_usar = True #item que quer retirar está na bolsa, porém ele deve ser usado.
-                        else: 
-                            item_a_usar = False
-                    if not item_a_usar:#item pode estar ou não estar na bolsa e ele não vai ser usado.
-                        print(f'{item_retirar} retirado da bolsa')
-                    if item_a_usar:
-                        print(f'Não faca isso Barbie, você precisa de {item_retirar} para trabalhar de {profissao_dia}')
-                else:
-                    item_fora_bolsa = True
-            if item_fora_bolsa and item_a_usar:          
-                print('Barbie, como você vai retirar algo que já não esta ai?')
+                        if item_a_retirar == item_dia: #testando se o item a retirar faz parte da profissão do dia
+                            print(f'Não faca isso Barbie, você precisa de {item_a_retirar} para trabalhar de {profissao_dia}')
+                        else:
+                            item_nfaz_parte_profissao += 1
+                    if item_nfaz_parte_profissao == len(relacao_dia):
+                        print(f'{item_a_retirar} retirado da bolsa')
+                        itens_bolsa.remove(item_a_retirar)
+                    
+                if item_fora_bolsa == len(itens_bolsa):
+                    print('Barbie, como você vai retirar algo que já não esta ai?')
+
+
+
+
