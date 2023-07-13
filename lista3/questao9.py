@@ -26,6 +26,24 @@ if len(minutos_posicao) > 1:
             if soma_treinamento == qtd_ideal_treino:
                 print(f'Conquistamos nossa primeira estrela! Barbie e Chelsea arrasaram nos treinos das {relacao[0]}!')
 
+#x valor almejado
 
+  #  dado, a, b, c, d
+
+  #  testar 
+  #  se a = x
+   # se a + b = x 
+  #  se a + b + c = x
+  #  se a + b + c + d = x
+
+   # se b = x
+   # se b + c = x
+    #se b + c + d = x
+
+   # se c = x
+    #se c + d = x
+
+    #se d = x
+#
 
 
