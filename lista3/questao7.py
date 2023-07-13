@@ -92,7 +92,9 @@ while condicao_parada:
             item_nfaz_parte_profissao = 0
             for item_bolsa in itens_bolsa:
                 if not item_a_retirar == item_bolsa: #testando se o item a retirar não está na bolsa
-                    item_fora_bolsa +=1 
+                    item_fora_bolsa +=1
+                    if item_fora_bolsa == len(itens_bolsa):
+                        print('Barbie, como você vai retirar algo que já não esta ai?')
                 else: #o item está na bolsa
                     for item_dia in relacao_dia:
                         if item_a_retirar == item_dia: #testando se o item a retirar faz parte da profissão do dia
@@ -103,9 +105,7 @@ while condicao_parada:
                         print(f'{item_a_retirar} retirado da bolsa')
                         itens_bolsa.remove(item_a_retirar)
                     
-                if item_fora_bolsa == len(itens_bolsa):
-                    print('Barbie, como você vai retirar algo que já não esta ai?')
-
+                
 
 
 
