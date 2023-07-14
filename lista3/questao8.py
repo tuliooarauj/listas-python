@@ -40,12 +40,8 @@ while decisao != 'Melhor escolher eu mesma' and decisao != 'Amei!!':
             indice_novo_foco = idx_penteado_escolhindo
 
         if not len(penteados) == 1:
-            #distancia_foco_final = abs(indice_novo_foco - (len(penteados) - 1))
-            #quanto_passado = abs((giro - distancia_foco_final))
-            #indice_novo_foco = quanto_passado - 1
 
             indice_novo_foco = (indice_novo_foco + giro) % len(penteados)
-
 
         else:  #caso da entrada só ter 1 elemento
             indice_novo_foco = 0
@@ -71,9 +67,6 @@ while decisao != 'Melhor escolher eu mesma' and decisao != 'Amei!!':
             indice_novo_foco = idx_penteado_escolhindo
         
         if not len(penteados) == 1:
-            #distancia_foco_inicial = abs(indice_novo_foco - (len(penteados) - len(penteados)))
-            #quanto_passado = abs((giro - distancia_foco_inicial))
-            #indice_novo_foco = quanto_passado
 
             indice_novo_foco = (indice_novo_foco - giro) % len(penteados)
 
@@ -102,9 +95,6 @@ while decisao != 'Melhor escolher eu mesma' and decisao != 'Amei!!':
             indice_novo_foco = idx_top_escolhindo
 
         if not len(tops) == 1:
-            #distancia_foco_final = abs(indice_novo_foco - (len(tops) - 1))
-            #quanto_passado = abs((giro - distancia_foco_final))
-            #indice_novo_foco = quanto_passado - 1
 
             indice_novo_foco = (indice_novo_foco + giro) % len(tops)
 
@@ -131,9 +121,6 @@ while decisao != 'Melhor escolher eu mesma' and decisao != 'Amei!!':
             indice_novo_foco = idx_top_escolhindo 
         
         if not len(tops) == 1:
-            #distancia_foco_inicial = abs(indice_novo_foco - (len(tops) - len(tops)))
-            #quanto_passado = abs((giro - distancia_foco_inicial))
-            #indice_novo_foco = quanto_passado
 
             indice_novo_foco = (indice_novo_foco - giro) % len(tops)
 
@@ -162,10 +149,7 @@ while decisao != 'Melhor escolher eu mesma' and decisao != 'Amei!!':
             idx_bottom_escolhindo = bottoms.index(bottom_escolhido)
             indice_novo_foco = idx_bottom_escolhindo
         
-        if not len(bottoms) == 1:
-            #distancia_foco_final = abs(indice_novo_foco - (len(bottoms) - 1))
-            #quanto_passado = abs((giro - distancia_foco_final))
-            #indice_novo_foco = quanto_passado - 1   
+        if not len(bottoms) == 1:   
 
             indice_novo_foco = (indice_novo_foco + giro) % len(bottoms)
 
@@ -193,9 +177,6 @@ while decisao != 'Melhor escolher eu mesma' and decisao != 'Amei!!':
             indice_novo_foco = idx_bottom_escolhindo
         
         if not len(bottoms) == 1:  
-            #distancia_foco_inicial = abs(indice_novo_foco - (len(bottoms) - len(bottoms)))
-            #quanto_passado = abs((giro - distancia_foco_inicial))
-            #indice_novo_foco = quanto_passado
 
             indice_novo_foco = (indice_novo_foco - giro) % len(bottoms)
 
@@ -226,9 +207,6 @@ while decisao != 'Melhor escolher eu mesma' and decisao != 'Amei!!':
         
 
         if not len(sapatos) == 1:
-            #distancia_foco_final = abs(indice_novo_foco - (len(sapatos) - 1))
-            #quanto_passado = abs((giro - distancia_foco_final))
-            #indice_novo_foco = quanto_passado - 1  
 
             indice_novo_foco = (indice_novo_foco + giro) % len(sapatos)
 
@@ -255,13 +233,9 @@ while decisao != 'Melhor escolher eu mesma' and decisao != 'Amei!!':
             idx_sapato_escolhindo = sapatos.index(sapato_escolhido)
             indice_novo_foco = idx_sapato_escolhindo
         
-        if not len(penteados) == 1:
-            #distancia_foco_inicial = abs(indice_novo_foco - (len(sapatos) - len(sapatos)))
-            #quanto_passado = abs((giro - distancia_foco_inicial))
-            #indice_novo_foco = quanto_passado   
+        if not len(penteados) == 1:   
 
             indice_novo_foco = (indice_novo_foco - giro) % len(sapatos)
-
 
         else:  #caso da entrada só ter 1 elemento
             indice_novo_foco = 0
@@ -280,4 +254,3 @@ while decisao != 'Melhor escolher eu mesma' and decisao != 'Amei!!':
         print('Essa Barbie vai arrasar com o look perfeito!')
     elif decisao == 'Melhor escolher eu mesma':
        print('Acho que estou precisando de ajustes, Ken :(') 
-
