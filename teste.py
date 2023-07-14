@@ -10,3 +10,10 @@ if y == []:
     print('true')
 else:
     print('false')
+
+    
+for num in range(qtd_entradas_seguintes, -1, -1):
+    if num == qtd_entradas_seguintes:
+        fat = num - 0
+    if num != qtd_entradas_seguintes:
+        fat += num

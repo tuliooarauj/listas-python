@@ -11,37 +11,33 @@ for entrada in range(qtd_entradas_seguintes):
 for relacao in relacao_posicao_treino:
         minutos_posicao.append(int(relacao[1]))
 
-for num in range(qtd_entradas_seguintes, -1, -1):
-    if num == qtd_entradas_seguintes:
-        fat = num - 0
-    if num != qtd_entradas_seguintes:
-        fat += num
+idx = 0
+lista_resultado = []
+while idx < qtd_entradas_seguintes: 
 
+    if idx == qtd_entradas_seguintes:
+        qtd_entradas_seguintes -= 1
+        relacao_posicao_treino.pop(0)
+        lista_resultado = []
+        idx = 0
 
+    if idx == 0:
+        somatorio = minutos_posicao[0]
+        lista_resultado.append(relacao_posicao_treino[idx][0])
+        relacao_somatorio = ' '.join(lista_resultado)
+        if somatorio == qtd_ideal_treino:
+            print(f'Conquistamos nossa primeira estrela! Barbie e Chelsea arrasaram nos treinos das {relacao_somatorio}!')
+            venceu = True
 
-if len(minutos_posicao) == 1:
-    if minutos_posicao[0] == qtd_ideal_treino:
-        venceu = True 
-        print(f'Conquistamos nossa primeira estrela! Barbie e Chelsea arrasaram nos treinos das {relacao_posicao_treino[0][0]}!')
+    else:
+        somatorio += minutos_posicao[idx]
+        lista_resultado.append(relacao_posicao_treino[idx][0])
+        relacao_somatorio = ' '.join(lista_resultado)
+        if somatorio == qtd_ideal_treino:
+            print(f'Conquistamos nossa primeira estrela! Barbie e Chelsea arrasaram nos treinos das {relacao_somatorio}!')
+            venceu = True
 
-if len(minutos_posicao) > 1:
-    lista_resultado = []
-    for idx in range(1, qtd_entradas_seguintes): #range !qtd_entradas
-        if idx == 1:
-            soma_treinamento = minutos_posicao[0] + minutos_posicao[idx]
-            lista_resultado.append(relacao_posicao_treino[0][0])
-            if soma_treinamento == qtd_ideal_treino:
-                lista_resultado.append(relacao_posicao_treino[idx][0])
-                venceu = True
-                print(f'Conquistamos nossa primeira estrela! Barbie e Chelsea arrasaram nos treinos das {lista_resultado}')
-
-        if idx > 1:
-            lista_resultado.append(relacao_posicao_treino[1][0])
-            soma_treinamento += minutos_posicao[idx]
-            if soma_treinamento == qtd_ideal_treino:
-                lista_resultado.append(relacao_posicao_treino[idx][0])
-                venceu = True
-                print(f'Conquistamos nossa primeira estrela! Barbie e Chelsea arrasaram nos treinos das {lista_resultado}')
+    idx += 1
 
 if not venceu:
     print('Não treinamos na dose certa e infelizmente a estrela vai ter que ficar para a próxima')    
