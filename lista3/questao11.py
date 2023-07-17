@@ -1,35 +1,55 @@
+voceX = int(input()) 
 voceY = int(input())
-voceX = int(input())
 
-cambistaY = int(input())
 cambistaX = int(input())
+cambistaY = int(input())
 
-pipocaY = int(input())
 pipocaX = int(input())
+pipocaY = int(input())
 
-barbieY = int(input())
 barbieX = int(input())
+barbieY = int(input())
 
-oppenheimerY = int(input())
 oppenheimerX = int(input())
+oppenheimerY = int(input())
 
-for linha in range(7):
+matriz_valores = []
+
+for linha in range(8):
     lista_matriz = []
-    for coluna in range(7):
-        if linha == 0 and coluna == 0:
-            lista_matriz.append('- ')
-        if linha == voceX:
-            lista_matriz.insert([voceY], 'V')
+    for coluna in range(8):
+        lista_matriz.append('- ')
+    matriz_valores.append(lista_matriz)
 
-        if lista_matriz[coluna] != 'V' and lista_matriz[coluna] != 'C' and lista_matriz[coluna] != 'P' and lista_matriz[coluna] != 'B' and lista_matriz[coluna] != 'O':
+    if linha == voceX:
+        for valor_coluna in matriz_valores:
+            valor_coluna.pop(voceY)      
+            valor_coluna.insert(voceY, 'V')
 
-            lista_matriz.append('- ')
+    if linha == cambistaX:
+        for valor_coluna in matriz_valores:
+            valor_coluna.pop(cambistaY)      
+            valor_coluna.insert(cambistaY, 'C')
 
+    if linha == pipocaX:
+        for valor_coluna in matriz_valores:
+            valor_coluna.pop(pipocaY)      
+            valor_coluna.insert(pipocaY, 'P')
 
-        matriz = ''.join(lista_matriz)
-    print(matriz)
+    if linha == barbieX:
+        for valor_coluna in matriz_valores:
+            valor_coluna.pop(barbieY)      
+            valor_coluna.insert(barbieY, 'B')
+    
+    if linha == oppenheimerX:
+        for valor_coluna in matriz_valores:
+            valor_coluna.pop(oppenheimerY)      
+            valor_coluna.insert(oppenheimerY, 'O')
 
-print(lista_matriz[3][5])
+    print(lista_matriz)
 
+while (voceY != barbieY and voceX != barbieX) or (voceY != oppenheimerY and voceX != oppenheimerX): 
+    sentido_deslocado = input()
+    
 
-
+print()
