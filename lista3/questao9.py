@@ -13,13 +13,8 @@ for relacao in relacao_posicao_treino:
 
 idx = 0
 lista_resultado = []
-while idx < qtd_entradas_seguintes: 
+while idx < qtd_entradas_seguintes and not venceu: 
 
-    if idx == qtd_entradas_seguintes:
-        qtd_entradas_seguintes -= 1
-        relacao_posicao_treino.pop(0)
-        lista_resultado = []
-        idx = 0
 
     if idx == 0:
         somatorio = minutos_posicao[0]
@@ -38,6 +33,13 @@ while idx < qtd_entradas_seguintes:
             venceu = True
 
     idx += 1
+    
+    if idx == qtd_entradas_seguintes:
+        qtd_entradas_seguintes -= 1
+        relacao_posicao_treino.pop(0)
+        minutos_posicao.pop(0)
+        lista_resultado = []
+        idx = 0
 
 if not venceu:
     print('Não treinamos na dose certa e infelizmente a estrela vai ter que ficar para a próxima')    
