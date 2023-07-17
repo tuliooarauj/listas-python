@@ -1,35 +1,67 @@
+voceX = int(input()) 
 voceY = int(input())
-voceX = int(input())
 
-cambistaY = int(input())
 cambistaX = int(input())
+cambistaY = int(input())
 
-pipocaY = int(input())
 pipocaX = int(input())
+pipocaY = int(input())
 
-barbieY = int(input())
 barbieX = int(input())
+barbieY = int(input())
 
-oppenheimerY = int(input())
 oppenheimerX = int(input())
+oppenheimerY = int(input())
 
-for linha in range(7):
+matriz_valores = []
+
+for linha in range(8):
     lista_matriz = []
-    for coluna in range(7):
-        if linha == 0 and coluna == 0:
-            lista_matriz.append('- ')
-        if linha == voceX:
-            lista_matriz.insert([voceY], 'V')
+    for coluna in range(8):
+        lista_matriz.append('- ')
+    matriz_valores.append(lista_matriz)
 
-        if lista_matriz[coluna] != 'V' and lista_matriz[coluna] != 'C' and lista_matriz[coluna] != 'P' and lista_matriz[coluna] != 'B' and lista_matriz[coluna] != 'O':
-
-            lista_matriz.append('- ')
+    if linha == voceX:
+        for valor_coluna in matriz_valores:
+            matriz_valores[linha][voceY] = 'V'
 
 
-        matriz = ''.join(lista_matriz)
-    print(matriz)
-
-print(lista_matriz[3][5])
-
+    if linha == cambistaX:
+        for valor_coluna in matriz_valores:
+            matriz_valores[linha][cambistaY] = 'C'
 
 
+    if linha == pipocaX:
+        for valor_coluna in matriz_valores:
+            matriz_valores[linha][pipocaY] = 'P'
+
+
+    if linha == barbieX:
+        for valor_coluna in matriz_valores:
+            matriz_valores[linha][barbieY] = 'B'
+
+
+    
+    if linha == oppenheimerX:
+        for valor_coluna in matriz_valores:
+            matriz_valores[linha][oppenheimerY] = 'O'
+
+
+
+    print(lista_matriz)
+
+while (voceY != barbieY and voceX != barbieX) or (voceY != oppenheimerY and voceX != oppenheimerX): 
+    sentido_deslocado = input()
+    
+    if sentido_deslocado == 'esquerda':
+        matriz_valores[voceX][voceY] = '- '
+        voceY -= 1
+        matriz_valores[voceX][voceY] = 'V'
+    if sentido_deslocado == 'direita':
+        voceY +- 1
+
+    for linhas in matriz_valores:
+        print(linhas)
+
+
+print()
