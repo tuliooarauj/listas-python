@@ -55,9 +55,8 @@ while not (voceY == barbieY and voceX == barbieX) or (voceY == oppenheimerY and 
     cambista_perto = 'Preciso acelerar, o cambista tá na minha cola!\n'
     cambista_medio = 'Consigo ver lá longe o cambista, mas é melhor acelerar!\n'
     cambista_longe = 'O cambista está longe, mas não posso ficar parado\n'
-
-    if cont > 1:
-        sentido_deslocado = input()
+    
+    sentido_deslocado = input()
 
     if pipoca_encontrada:
         print('Já peguei a pipoca')
@@ -97,14 +96,16 @@ while not (voceY == barbieY and voceX == barbieX) or (voceY == oppenheimerY and 
 #===========================================================================================================
 
     if pipoca_destruida == False and pipoca_encontrada == False and sentido_deslocado == 'esquerda':
-        if voceX == pipocaX and voceY == pipocaY:
+        if not voceX == pipocaX and voceY == pipocaY:
             print('Finalmente! Peguei a pipoca')
             pipoca_encontrada = True
         else:
-            print('Ainda não achei a pipoca')
             matriz_valores[voceX][voceY] = '- '
             voceY -= 1
             matriz_valores[voceX][voceY] = 'V'
+            for linhas in matriz_valores:
+                print(''.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
+            print('Ainda não achei a pipoca')
 
         if dVC <= 3:
             print(cambista_perto)
@@ -234,8 +235,7 @@ while not (voceY == barbieY and voceX == barbieX) or (voceY == oppenheimerY and 
             elif dVC > 4:
                 print(cambista_longe)
 
-    for linhas in matriz_valores:
-        print(''.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
+    
 else:
     if not mesma_posicao: #personagem nao encontrado pelo cambista
         if not pipoca_encontrada:
