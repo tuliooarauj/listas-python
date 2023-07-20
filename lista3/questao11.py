@@ -107,7 +107,7 @@ while not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY
                 mesma_posicao = True
                 matriz_valores[voceX][voceY] = 'C'
             for linhas in matriz_valores:
-                    print(''.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
+                    print(' '.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
                     
             if voceX == pipocaX and voceY == pipocaY:
                 print('Finalmente! Peguei a pipoca')
@@ -115,15 +115,17 @@ while not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY
                 rodada_pipoca_encontrada = cont
             else:
                 if not pipoca_encontrada:
-                    print('Ainda não achei a pipoca')
+                    if not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY and voceX == oppenheimerX):
+                        print('Ainda não achei a pipoca')
 
             dVC = ((voceX - cambistaX)**2 + (voceY - cambistaY)**2) ** 0.5
-            if dVC <= 3:
-                print(cambista_perto)
-            elif dVC > 3 and dVC <= 4:
-                print(cambista_medio)
-            elif dVC > 4:
-                print(cambista_longe)
+            if not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY and voceX == oppenheimerX):
+                if dVC <= 3:
+                    print(cambista_perto)
+                elif dVC > 3 and dVC <= 4:
+                    print(cambista_medio)
+                elif dVC > 4:
+                    print(cambista_longe)
 
         else:
             #Pipoca foi destruída ou ja encontrada
@@ -136,7 +138,7 @@ while not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY
                         mesma_posicao = True
                         matriz_valores[voceX][voceY] = 'C'
                     for linhas in matriz_valores:
-                        print(''.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
+                        print(' '.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
 
 
                 if pipoca_encontrada:
@@ -148,16 +150,16 @@ while not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY
                             mesma_posicao = True
                             matriz_valores[voceX][voceY] = 'C'
                         for linhas in matriz_valores:
-                            print(''.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
-                        if not (voceY == barbieY and voceX == barbieX) or (voceY == oppenheimerY and voceX == oppenheimerX):
+                            print(' '.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
+                        if not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY and voceX == oppenheimerX):
                             print('Já peguei a pipoca')
                     else:
                         #ainda está parado na rodada
                         for linhas in matriz_valores:
-                            print(''.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
+                            print(' '.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
                         print('Já peguei a pipoca')
 
-                if not (voceY == barbieY and voceX == barbieX) or (voceY == oppenheimerY and voceX == oppenheimerX):
+                if not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY and voceX == oppenheimerX):
                     dVC = ((voceX - cambistaX)**2 + (voceY - cambistaY)**2) ** 0.5
                     if dVC <= 3:
                         print(cambista_perto)
@@ -175,8 +177,11 @@ while not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY
             matriz_valores[voceX][voceY] = '-'
             voceY += 1
             matriz_valores[voceX][voceY] = 'V'
+            if voceX == cambistaX and voceY == cambistaY:
+                mesma_posicao = True
+                matriz_valores[voceX][voceY] = 'C'
             for linhas in matriz_valores:
-                    print(''.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
+                    print(' '.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
 
             if voceX == pipocaX and voceY == pipocaY:
                 print('Finalmente! Peguei a pipoca')
@@ -184,15 +189,17 @@ while not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY
                 rodada_pipoca_encontrada = cont
             else:
                 if not pipoca_encontrada:
-                    print('Ainda não achei a pipoca')
+                    if not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY and voceX == oppenheimerX):
+                        print('Ainda não achei a pipoca')
 
             dVC = ((voceX - cambistaX)**2 + (voceY - cambistaY)**2) ** 0.5
-            if dVC <= 3:
-                print(cambista_perto)
-            elif dVC > 3 and dVC <= 4:
-                print(cambista_medio)
-            elif dVC > 4:
-                print(cambista_longe)
+            if not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY and voceX == oppenheimerX):
+                if dVC <= 3:
+                    print(cambista_perto)
+                elif dVC > 3 and dVC <= 4:
+                    print(cambista_medio)
+                elif dVC > 4:
+                    print(cambista_longe)
 
         else:
             #Pipoca foi destruída ou ja encontrada
@@ -202,8 +209,11 @@ while not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY
                     matriz_valores[voceX][voceY] = '-'
                     voceY += 1
                     matriz_valores[voceX][voceY] = 'V'
+                    if voceX == cambistaX and voceY == cambistaY:
+                        mesma_posicao = True
+                        matriz_valores[voceX][voceY] = 'C'
                     for linhas in matriz_valores:
-                        print(''.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
+                        print(' '.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
 
                 if pipoca_encontrada:
 
@@ -211,18 +221,21 @@ while not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY
                         matriz_valores[voceX][voceY] = '-'
                         voceY += 1
                         matriz_valores[voceX][voceY] = 'V'
+                        if voceX == cambistaX and voceY == cambistaY:
+                            mesma_posicao = True
+                            matriz_valores[voceX][voceY] = 'C'
                         for linhas in matriz_valores:
-                            print(''.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
-                        if not (voceY == barbieY and voceX == barbieX) or (voceY == oppenheimerY and voceX == oppenheimerX):
+                            print(' '.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
+                        if not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY and voceX == oppenheimerX):
                             print('Já peguei a pipoca')
 
                     else:
                         #ainda está parado na rodada
                         for linhas in matriz_valores:
-                            print(''.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
+                            print(' '.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
                         print('Já peguei a pipoca')
                     
-                if not (voceY == barbieY and voceX == barbieX) or (voceY == oppenheimerY and voceX == oppenheimerX):
+                if not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY and voceX == oppenheimerX):
                     dVC = ((voceX - cambistaX)**2 + (voceY - cambistaY)**2) ** 0.5
                     if dVC <= 3:
                         print(cambista_perto)
@@ -240,8 +253,11 @@ while not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY
             matriz_valores[voceX][voceY] = '-'
             voceX -= 1
             matriz_valores[voceX][voceY] = 'V'
+            if voceX == cambistaX and voceY == cambistaY:
+                mesma_posicao = True
+                matriz_valores[voceX][voceY] = 'C'
             for linhas in matriz_valores:
-                    print(''.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
+                    print(' '.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
 
             if voceX == pipocaX and voceY == pipocaY:
                 print('Finalmente! Peguei a pipoca')
@@ -249,15 +265,17 @@ while not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY
                 pipoca_encontrada = True
             else:
                 if not pipoca_encontrada:
-                    print('Ainda não achei a pipoca')
+                    if not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY and voceX == oppenheimerX):
+                        print('Ainda não achei a pipoca')
 
-            dVC = ((voceX - cambistaX)**2 + (voceY - cambistaY)**2) ** 0.5
-            if dVC <= 3:
-                print(cambista_perto)
-            elif dVC > 3 and dVC <= 4:
-                print(cambista_medio)
-            elif dVC > 4:
-                print(cambista_longe)
+            if not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY and voceX == oppenheimerX):
+                dVC = ((voceX - cambistaX)**2 + (voceY - cambistaY)**2) ** 0.5
+                if dVC <= 3:
+                    print(cambista_perto)
+                elif dVC > 3 and dVC <= 4:
+                    print(cambista_medio)
+                elif dVC > 4:
+                    print(cambista_longe)
         else:
             #Pipoca foi destruída ou ja encontrada
             if sentido_deslocado == 'cima':
@@ -266,27 +284,33 @@ while not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY
                     matriz_valores[voceX][voceY] = '-'
                     voceX -= 1
                     matriz_valores[voceX][voceY] = 'V' 
+                    if voceX == cambistaX and voceY == cambistaY:
+                        mesma_posicao = True
+                        matriz_valores[voceX][voceY] = 'C'
                     for linhas in matriz_valores:
-                        print(''.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
+                        print(' '.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
 
                 if pipoca_encontrada:
                     if cont >= rodada_pipoca_encontrada + 2:
                         matriz_valores[voceX][voceY] = '-'
                         voceX -= 1
                         matriz_valores[voceX][voceY] = 'V' 
+                        if voceX == cambistaX and voceY == cambistaY:
+                            mesma_posicao = True
+                            matriz_valores[voceX][voceY] = 'C'
                         for linhas in matriz_valores:
-                            print(''.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
+                            print(' '.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
 
-                        if not (voceY == barbieY and voceX == barbieX) or (voceY == oppenheimerY and voceX == oppenheimerX):
+                        if not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY and voceX == oppenheimerX):
                             print('Já peguei a pipoca')
 
                     else:
                         #ainda está parado na rodada
                         for linhas in matriz_valores:
-                            print(''.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)                
+                            print(' '.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)                
                         print('Já peguei a pipoca')
 
-                if not (voceY == barbieY and voceX == barbieX) or (voceY == oppenheimerY and voceX == oppenheimerX):
+                if not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY and voceX == oppenheimerX):
                     dVC = ((voceX - cambistaX)**2 + (voceY - cambistaY)**2) ** 0.5
                     if dVC <= 3:
                         print(cambista_perto)
@@ -305,23 +329,28 @@ while not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY
             matriz_valores[voceX][voceY] = '-'
             voceX += 1
             matriz_valores[voceX][voceY] = 'V'
+            if voceX == cambistaX and voceY == cambistaY:
+                mesma_posicao = True
+                matriz_valores[voceX][voceY] = 'C'
             for linhas in matriz_valores:
-                    print(''.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
+                    print(' '.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
             if voceX == pipocaX and voceY == pipocaY:
                 print('Finalmente! Peguei a pipoca')
                 pipoca_encontrada = True
                 rodada_pipoca_encontrada = cont
             else:
                 if not pipoca_encontrada:
-                    print('Ainda não achei a pipoca')
+                    if not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY and voceX == oppenheimerX):
+                        print('Ainda não achei a pipoca')
 
-            dVC = ((voceX - cambistaX)**2 + (voceY - cambistaY)**2) ** 0.5
-            if dVC <= 3:
-                print(cambista_perto)
-            elif dVC > 3 and dVC <= 4:
-                print(cambista_medio)
-            elif dVC > 4:
-                print(cambista_longe)
+            if not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY and voceX == oppenheimerX):
+                dVC = ((voceX - cambistaX)**2 + (voceY - cambistaY)**2) ** 0.5
+                if dVC <= 3:
+                    print(cambista_perto)
+                elif dVC > 3 and dVC <= 4:
+                    print(cambista_medio)
+                elif dVC > 4:
+                    print(cambista_longe)
         else:
             #Pipoca  foi destruída ou encontrada
 
@@ -331,26 +360,32 @@ while not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY
                     matriz_valores[voceX][voceY] = '-'
                     voceX += 1
                     matriz_valores[voceX][voceY] = 'V'
+                    if voceX == cambistaX and voceY == cambistaY:
+                        mesma_posicao = True
+                        matriz_valores[voceX][voceY] = 'C'
                     for linhas in matriz_valores:
-                        print(''.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
+                        print(' '.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
 
                 if pipoca_encontrada:
                     if cont >= rodada_pipoca_encontrada + 2:
                         matriz_valores[voceX][voceY] = '-'
                         voceX += 1
                         matriz_valores[voceX][voceY] = 'V'
+                        if voceX == cambistaX and voceY == cambistaY:
+                            mesma_posicao = True
+                            matriz_valores[voceX][voceY] = 'C'
                         for linhas in matriz_valores:
-                            print(''.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
+                            print(' '.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
 
-                        if not (voceY == barbieY and voceX == barbieX) or (voceY == oppenheimerY and voceX == oppenheimerX):
+                        if not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY and voceX == oppenheimerX):
                             print('Já peguei a pipoca')
                     else:
                         #ainda está parado na rodada
                         for linhas in matriz_valores:
-                            print(''.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
+                            print(' '.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
                         print('Já peguei a pipoca')
 
-                if not (voceY == barbieY and voceX == barbieX) or (voceY == oppenheimerY and voceX == oppenheimerX):
+                if not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY and voceX == oppenheimerX):
                     dVC = ((voceX - cambistaX)**2 + (voceY - cambistaY)**2) ** 0.5
                     if dVC <= 3:
                         print(cambista_perto)
@@ -371,7 +406,5 @@ else:
                 print('Aí sim, que filmaço! Christopher Nolan nunca erra!')
     else:
         for linhas in matriz_valores:
-            print(''.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
+            print(' '.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
         print('Droga! Agora volto pra casa sem filme e sem dinheiro.')
-
-
