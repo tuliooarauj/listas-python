@@ -99,7 +99,7 @@ while not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY
 #                   ESQUERDA
 #===========================================================================================================
 
-        if pipoca_destruida == False and pipoca_encontrada == False and sentido_deslocado == 'esquerda':
+        if pipoca_encontrada == False and sentido_deslocado == 'esquerda':
             matriz_valores[voceX][voceY] = '-'
             voceY -= 1
             matriz_valores[voceX][voceY] = 'V'
@@ -173,7 +173,7 @@ while not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY
     #===========================================================================================================
 
 
-        if pipoca_destruida == False and pipoca_encontrada == False and sentido_deslocado == 'direita':
+        if pipoca_encontrada == False and sentido_deslocado == 'direita':
             matriz_valores[voceX][voceY] = '-'
             voceY += 1
             matriz_valores[voceX][voceY] = 'V'
@@ -249,7 +249,7 @@ while not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY
     #===========================================================================================================
 
 
-        if pipoca_destruida == False and pipoca_encontrada == False and sentido_deslocado == 'cima':
+        if pipoca_encontrada == False and sentido_deslocado == 'cima':
             matriz_valores[voceX][voceY] = '-'
             voceX -= 1
             matriz_valores[voceX][voceY] = 'V'
@@ -325,32 +325,33 @@ while not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY
     #===========================================================================================================
 
         
-        if pipoca_destruida == False and pipoca_encontrada == False and sentido_deslocado == 'baixo':
+        if pipoca_encontrada == False and sentido_deslocado == 'baixo':
             matriz_valores[voceX][voceY] = '-'
             voceX += 1
             matriz_valores[voceX][voceY] = 'V'
             if voceX == cambistaX and voceY == cambistaY:
                 mesma_posicao = True
                 matriz_valores[voceX][voceY] = 'C'
-            for linhas in matriz_valores:
-                    print(' '.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
-            if voceX == pipocaX and voceY == pipocaY:
-                print('Finalmente! Peguei a pipoca')
-                pipoca_encontrada = True
-                rodada_pipoca_encontrada = cont
-            else:
-                if not pipoca_encontrada:
-                    if not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY and voceX == oppenheimerX):
-                        print('Ainda não achei a pipoca')
+            if not mesma_posicao:
+                    for linhas in matriz_valores:
+                        print(' '.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
+                    if voceX == pipocaX and voceY == pipocaY:
+                        print('Finalmente! Peguei a pipoca')
+                        pipoca_encontrada = True
+                        rodada_pipoca_encontrada = cont
+                    else:
+                        if not pipoca_encontrada and not mesma_posicao:
+                            if not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY and voceX == oppenheimerX):
+                                print('Ainda não achei a pipoca')
 
-            if not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY and voceX == oppenheimerX):
-                dVC = ((voceX - cambistaX)**2 + (voceY - cambistaY)**2) ** 0.5
-                if dVC <= 3:
-                    print(cambista_perto)
-                elif dVC > 3 and dVC <= 4:
-                    print(cambista_medio)
-                elif dVC > 4:
-                    print(cambista_longe)
+                    if not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY and voceX == oppenheimerX) and not mesma_posicao:
+                        dVC = ((voceX - cambistaX)**2 + (voceY - cambistaY)**2) ** 0.5
+                        if dVC <= 3:
+                            print(cambista_perto)
+                        elif dVC > 3 and dVC <= 4:
+                            print(cambista_medio)
+                        elif dVC > 4:
+                            print(cambista_longe)
         else:
             #Pipoca  foi destruída ou encontrada
 
@@ -384,15 +385,17 @@ while not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY
                         for linhas in matriz_valores:
                             print(' '.join(linhas)) #organizar essa ordem: (primeiro faz a conta, printa a matriz e so dps printa as mensagens)
                         print('Já peguei a pipoca')
+                
+                if not mesma_posicao:
 
-                if not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY and voceX == oppenheimerX):
-                    dVC = ((voceX - cambistaX)**2 + (voceY - cambistaY)**2) ** 0.5
-                    if dVC <= 3:
-                        print(cambista_perto)
-                    elif dVC > 3 and dVC <= 4:
-                        print(cambista_medio)
-                    elif dVC > 4:
-                        print(cambista_longe)
+                  if not (voceY == barbieY and voceX == barbieX) and not (voceY == oppenheimerY and voceX == oppenheimerX):
+                      dVC = ((voceX - cambistaX)**2 + (voceY - cambistaY)**2) ** 0.5
+                      if dVC <= 3:
+                          print(cambista_perto)
+                      elif dVC > 3 and dVC <= 4:
+                          print(cambista_medio)
+                      elif dVC > 4:
+                          print(cambista_longe)
 
     
 else:
