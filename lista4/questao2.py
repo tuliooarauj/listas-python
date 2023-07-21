@@ -39,7 +39,7 @@ while not corrida_finalizada:
         propulsor_participante -= 1
         if propulsor_participante == 0:
             participante_desclassificado += 1
-            print(f'BUUMM!! Infelizmente, {informacoes_participante[0]} está fora da corrida')
+            print(f'BUUMM!! Infelizmente, {informacoes_participante[0]} está fora da corrida.')
             lista_participantes.remove(informacoes_participante)
             situacao = 'Próximo'
     elif situacao == situacao3:
