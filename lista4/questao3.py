@@ -13,7 +13,29 @@ def verifica_palindromo(frase_ou_numero):
         return False #Não é palíndromo
 
 def verifica_distintos(frase_ou_numero):
-    resultado_lista = separa_algarismos_digitos(frase_ou_numero)
+    resultado_lista = separa_algarismos_digitos(frase_ou_numero) 
+    repetidos = len(resultado_lista)
+    letras = 0
     for caracter in resultado_lista:
-        caracter_repetido = resultado_lista.count(caracter)
-        x = len(resultado_lista) - caracter
+        if not repetidos < 1:
+            caracter_repetido = resultado_lista.count(caracter)
+            repetidos -= caracter_repetido
+            letras += 1
+    return letras
+
+n_frases = int(input())
+
+for i in range(n_frases):
+    string_analisada = input()
+    string_modificada = string_analisada.lower().replace(' ','')
+    if verifica_palindromo(string_modificada):
+        if string_analisada.isnumeric():
+            print(f'O número "{string_analisada}" é um palíndromo!')
+            qtd_distintos = verifica_distintos(string_modificada)
+            print(f'Há {qtd_distintos} número(s) distinto(s) na sequência de números.')
+        else:
+            print(f'A frase "{string_analisada}" é um palíndromo!')
+            qtd_distintos = verifica_distintos(string_modificada)
+            print(f'Há {qtd_distintos} letra(s) distinta(s) na frase.')
+    else:
+        print('A frase ou o número não é um palíndromo.')
