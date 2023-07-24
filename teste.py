@@ -18,3 +18,4 @@ for i in x: #entrou na capsula
     for j in i: #entrou na coordenada
         distancia = ((int(posicao_explosao[0]) - int(j[0]))**2 + (int(posicao_explosao[1]) - int(j[1]))**2) ** (1/2)
         lista_distancias.append(distancia)
+
