@@ -16,14 +16,16 @@ def eh_multiplo(string_analisada):
     for caracter in string_analisada:
         if caracter.isnumeric():
             lista_caracteres.append(caracter)
+    lista_caracteres = sorted(lista_caracteres)
     for numero in lista_caracteres:
-        if not int(numero) % int(lista_caracteres[0]) == 0: # encontrar pelo menos um que não é divisível
-            nao_multiplo += 1
-        
-    if nao_multiplo == 0:
-        return True #eh multiplo e a posição vale 3
-    else:
-        return False
+        if not int(lista_caracteres[0]) == 0:
+            if not int(numero) % int(lista_caracteres[0]) == 0: # encontrar pelo menos um que não é divisível
+                nao_multiplo += 1
+    if not lista_caracteres == []:
+        if nao_multiplo == 0:
+            return True #eh multiplo e a posição vale 3
+        else:
+            return False
         
 def decodificar_codigo(string):
     if not eh_multiplo(string):
@@ -37,6 +39,8 @@ def decodificar_codigo(string):
             passo3 = int(passo2) #aplicando a func. piso no passo 3
             passo4 = passo3 % 7
             coordenada_posicao = passo4
+    else:
+        coordenada_posicao = 3
     return coordenada_posicao
         
 posicao_x = input()
@@ -60,12 +64,12 @@ for matriz in matriz_valores:
 
 if matriz_valores[3][3] == '☆':
     print('Ótimo, a estrela vai ficar exatamente no meio da fotografia! Posição melhor não existe!')
-elif matriz_valores[0][0] == '☆' or matriz_valores[0][6] == '☆' or matriz_valores[6][0] == '☆' or matriz_valores[6][6] == '☆':
+elif matriz_valores[0][posicao_y_estrela] == '☆' or matriz_valores[6][posicao_y_estrela] == '☆' or matriz_valores[posicao_x_estrela][0] == '☆' or matriz_valores[posicao_x_estrela][6] == '☆':
     print('Ihhh, vou ter que relocalizar a câmera, uma fotografia com a estrela na borda não dá! Infelizmente demora um pouco para criar outro código...')
 else:
     print('Ok, agora é só enviar a matriz!')
 
-if matriz_valores[0][0] == '☆' or matriz_valores[0][6] == '☆' or matriz_valores[6][0] == '☆' or matriz_valores[6][6] == '☆':
+if matriz_valores[0][posicao_y_estrela] == '☆' or matriz_valores[6][posicao_y_estrela] == '☆' or matriz_valores[posicao_x_estrela][0] == '☆' or matriz_valores[posicao_x_estrela][6] == '☆':
     print('Mesmo que eu não tenha conseguido uma matriz boa para tirar a foto, obrigado pelo seu tempo.')
 else:
     print('Obrigado pela ajuda! A foto ficou ótima!')

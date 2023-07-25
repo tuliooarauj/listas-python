@@ -1,21 +1,28 @@
-def verifica_distintos(frase_ou_numero):
-    resultado_lista = separa_algarismos_digitos(frase_ou_numero) 
-    repetidos = len(resultado_lista)
-    letras = 0
-    for caracter in resultado_lista:
-        if not repetidos < 1:
-            caracter_repetido = resultado_lista.count(caracter)
-            repetidos -= caracter_repetido
-            letras += 1
-    return letras
 
+posicao_x_estrela = int(input())
+posicao_y_estrela = int(input())
 
-x = eval('[[[1, 1], [3, 3], [5, 5]], [[6, 6], [8, 8]]]')
+matriz_valores = []
 
-lista_distancias = []
-posicao_explosao=[0, 0]
-for i in x: #entrou na capsula
-    for j in i: #entrou na coordenada
-        distancia = ((int(posicao_explosao[0]) - int(j[0]))**2 + (int(posicao_explosao[1]) - int(j[1]))**2) ** (1/2)
-        lista_distancias.append(distancia)
+for linha in range(7):
+    linha_matriz = []
+    for coluna in range(7):
+        linha_matriz.append('.')
+    matriz_valores.append(linha_matriz)
 
+matriz_valores[posicao_x_estrela][posicao_y_estrela] = '☆'
+
+for matriz in matriz_valores:
+    print(' '.join(matriz))
+
+if matriz_valores[3][3] == '☆':
+    print('Ótimo, a estrela vai ficar exatamente no meio da fotografia! Posição melhor não existe!')
+elif matriz_valores[0][posicao_y_estrela] == '☆' or matriz_valores[6][posicao_y_estrela] == '☆' or matriz_valores[posicao_x_estrela][0] == '☆' or matriz_valores[posicao_x_estrela][6] == '☆':
+    print('Ihhh, vou ter que relocalizar a câmera, uma fotografia com a estrela na borda não dá! Infelizmente demora um pouco para criar outro código...')
+else:
+    print('Ok, agora é só enviar a matriz!')
+
+if matriz_valores[0][posicao_y_estrela] == '☆' or matriz_valores[6][posicao_y_estrela] == '☆' or matriz_valores[posicao_x_estrela][0] == '☆' or matriz_valores[posicao_x_estrela][6] == '☆':
+    print('Mesmo que eu não tenha conseguido uma matriz boa para tirar a foto, obrigado pelo seu tempo.')
+else:
+    print('Obrigado pela ajuda! A foto ficou ótima!')
