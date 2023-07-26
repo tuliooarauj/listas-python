@@ -10,30 +10,30 @@ def res_notacao_polonesa(expressao):
             soma = lambda a, b: a + b
             operando1 = operandos.pop() #vai retirar o último número adicionado à lista de operandos
             operando2 = operandos.pop() #vai retirar o penúltimo número adicionado à lista de operandos
-            resultado = soma(int(operando2), int(operando1))
+            resultado = soma((operando2), (operando1))
             operandos.append(resultado)
         elif elemento == operador_subtracao:
             subtracao = lambda a, b: a - b
             operando1 = operandos.pop() #vai retirar o último número adicionado à lista de operandos
             operando2 = operandos.pop() #vai retirar o penúltimo número adicionado à lista de operandos
-            resultado = subtracao(int(operando2), int(operando1))
+            resultado = subtracao((operando2), (operando1))
             operandos.append(resultado)
         elif elemento == operador_produto:
             produto = lambda a, b: a * b
             operando1 = operandos.pop() #vai retirar o último número adicionado à lista de operandos
             operando2 = operandos.pop() #vai retirar o penúltimo número adicionado à lista de operandos
-            resultado = produto(int(operando2), int(operando1))
+            resultado = produto((operando2), (operando1))
             operandos.append(resultado)
         elif elemento == operador_divisao:
             divisao = lambda a, b: a / b
             operando1 = operandos.pop() #vai retirar o último número adicionado à lista de operandos
             operando2 = operandos.pop() #vai retirar o penúltimo número adicionado à lista de operandos
-            resultado = divisao(int(operando2), int(operando1))
+            resultado = divisao((operando2), (operando1))
             operandos.append(resultado)
         else:
-            operandos.append(elemento)
+            operandos.append(float(elemento))
             
-    return operandos[0]
+    return (operandos[0])
 
 def verificacao_nperfeito(numero):
     valor_analisado = int(res_notacao_polonesa(numero))
