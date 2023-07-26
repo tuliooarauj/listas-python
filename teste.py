@@ -1,34 +1,17 @@
-def resolve_equacao_rpn(entrada):
-    pilha = []
-    operadores = {'+': lambda x, y: x + y,
-                  '-': lambda x, y: x - y,
-                  '*': lambda x, y: x * y,
-                  '/': lambda x, y: x / y}
+# mensagem inicial
+nome='Tantan'
+print('Olá! '+ nome, end=". ")
 
-    for token in entrada.split():
-        if token in operadores:
-            # Se for um operador, desempilha os dois últimos operandos
-            # e realiza a operação correspondente
-            operando2 = pilha.pop()
-            operando1 = pilha.pop()
-            resultado = operadores[token](operando1, operando2)
-            pilha.append(resultado)
-        else:
-            # Se for um operando, adiciona-o à pilha
-            pilha.append(float(token))
+# levantamento do volume de material
+vol_mat = int(input())
 
-    # O resultado final estará no topo da pilha
-    return pilha[0]
+#cálculo de cada casa
+if(vol_mat>=0):
+    cada_casa=int(vol_mat/3)
+    print(nome+', voçê construiu '+ str(cada_casa)+ ' casa(s)')
+else:
+    print('Digite um valor válido e tente novamente')
 
-# Exemplo de uso:
-condicao = ''
-soma = []
-while condicao != 'oi':
-    entrada = input()
-    if not entrada == '':
-        resultado = resolve_equacao_rpn(entrada)
-        soma.append(resultado)
-        somatorio = sum(soma)
-
-
-print("Resultado:", soma)  # Deve imprimir 35.0
+#cálculo da sobra
+sobra=vol_mat - cada_casa*3
+print('E ainda sobrou '+ str(sobra) +' pack(s) de ferro para descarte.')
