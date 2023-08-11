@@ -59,7 +59,6 @@ def desbrava_castelo(matriz_castelo, idx_sala, encontrou_princesa, qtd_moeda, en
         return desbrava_castelo(matriz_castelo, encontra_prox_sala(sala_atual), encontra_zelda(sala_atual), conta_moeda_sala(sala_atual, qtd_moeda), encontra_espada(sala_atual, encontrou_espada), encontra_agahnim(sala_atual))
 
 
-
 quantidade_salas = int(input())
 matriz_castelo = cria_mapa(quantidade_salas)
 mapa_castelo = matriz_castelo.copy()
@@ -69,5 +68,14 @@ princesa_encontrada = False
 espada_encontrada = False
 agahnim_encontrado = False
 
-print(desbrava_castelo(matriz_castelo, sala_inicial, princesa_encontrada, moedas_iniciais, espada_encontrada, agahnim_encontrado))
-#print(moedas_castelo(mapa_castelo, moedas_iniciais))
+castelo_desbravado = (desbrava_castelo(matriz_castelo, sala_inicial, princesa_encontrada, moedas_iniciais, espada_encontrada, agahnim_encontrado))
+
+if castelo_desbravado[0] == True: #princesa encontrada
+    if castelo_desbravado[2] == True and castelo_desbravado[1] == True: #Encontrou agahnim e encontrou espada
+        print(f'A princesa Zelda está a salvo e ainda conseguimos coletar {castelo_desbravado[3]} rupees')
+    elif castelo_desbravado[2] == True and castelo_desbravado[1] == False: #Encontrou agahnim e não encontrou espada
+        print(f'Infelizmente a princesa ainda corre perigo, mas temos {castelo_desbravado[3]} rupees para nos ajudar nas buscas')
+    elif castelo_desbravado[2] == False: #Agahnim não encontrado
+        print(f'A princesa Zelda está a salvo e ainda conseguimos coletar {castelo_desbravado[3]} rupees')
+else:
+    print(f'Infelizmente a princesa ainda corre perigo, mas temos {castelo_desbravado[1]} rupees para nos ajudar nas buscas')
