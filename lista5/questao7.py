@@ -135,7 +135,7 @@ def minimax(tabuleiro, maximizando):
             return melhor_placar
         
         else:
-            melhor_placar = 1000
+            melhor_placar = 800
             for posicao in tabuleiro:
                 if posicao == '_':
                     posicao = jogador2

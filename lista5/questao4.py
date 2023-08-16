@@ -19,10 +19,12 @@ def verifica_coeficiente(string_grau_coeficiente_modificada, lista_coeficiente):
         if caracter_lista.isnumeric() or caracter_lista == '-':
             lista_coeficiente.append(caracter_lista)
         return verifica_coeficiente(string_grau_coeficiente_modificada[1:], lista_coeficiente)
+    
+
         
 def monta_monomio(coeficiente, grau):
     if coeficiente == 0:
-        return None
+        return '0'
     elif coeficiente == 1:
         return 'x^'+str(grau)
     elif coeficiente == -1:
@@ -79,15 +81,26 @@ for _ in range(coeficientes_nao_nulos):
     else:
         coeficiente = int(derivada)
         monomio_derivado = monta_monomio(coeficiente, grau)
-        if monomio_derivado is not None:
-            derivadas.append(monomio_derivado)
+        derivadas.append(monomio_derivado)
 
 monomios_ordenados = ordena_polinomio(monomios)
 polinomio = '+'.join(monomios_ordenados)
 aparicoes_erradas = polinomio.count('+-')
 polinomio_FPB = polinomio.replace('+-','-',aparicoes_erradas)
+polinomio_derivadas = '+'.join(derivadas)
 
+"""def remove_repetidos(string_repetida):
+    if len(string_repetida) == 1:
+        return string_repetida
+    elif string_repetida[:1] != '0':
+        return string_repetida
+    else:
+        if string_repetida[:1] == '0':
+            return remove_repetidos(string_repetida[1:])"""
+
+polinomio_FPB = polinomio_FPB.replace('0+','',polinomio_FPB.count('0'))
+polinomio_derivadas_corrigido = polinomio_derivadas.replace('0+','',polinomio_derivadas.count('0'))   
 
 print(f'A derivada {ordem_derivada} do polinômio {polinomio_FPB} é')
-print('+'.join(derivadas))
+print(polinomio_derivadas_corrigido)
 
