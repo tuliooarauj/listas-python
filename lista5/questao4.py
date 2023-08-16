@@ -54,11 +54,14 @@ def monta_derivada_monomio(monomio, coeficiente, grau, ordem):
             monomio = monta_monomio(int(resultado[0]), int(resultado[1]))
             return monta_derivada_monomio(monomio, int(resultado[0]), int(resultado[1]), ordem - 1)
 
-def ordem_polinomio(polinomio):
-    return polinomio.count('^')
-def ordena_polinomio(polinomio):
-    polinomio_FPB = sorted(polinomio, key=ordem_polinomio)
-    return polinomio_FPB
+def cria_lista_coeficientes(lista_polinomio, grau_polinomio):
+    for _ in range(int(grau_polinomio)+1):
+        lista_polinomio.append([])
+    return lista_polinomio
+
+def ordena_coeficientes_polinomio(coeficiente, grau, lista_polinomio):
+    lista_polinomio[grau] = coeficiente
+    return lista_polinomio
 
 grau_polinomio = input()
 ordem_derivada = int(input())
@@ -66,13 +69,18 @@ coeficientes_nao_nulos = int(input())
 monomios = []
 derivadas = []
 
+coeficientes_ordenados = cria_lista_coeficientes([], grau_polinomio)
+
 for _ in range(coeficientes_nao_nulos):
     grau_e_coeficiente = input()   
     grau = verifica_grau(grau_e_coeficiente, [], grau_polinomio)
     coeficiente = verifica_coeficiente(retorna_ultimos_4digitos(grau_e_coeficiente), [])
-    monomio = monta_monomio(coeficiente, grau)
-    derivada = monta_derivada_monomio(monomio, coeficiente, grau, ordem_derivada)
+    ordena_coeficientes_polinomio(coeficiente, int(grau), coeficientes_ordenados)
+
+for coeficiente in coeficientes_ordenados:
+    monomio = monta_monomio(coeficiente, coeficientes_ordenados.index(coeficiente))
     monomios.append(monomio)
+    derivada = monta_derivada_monomio(monomio, coeficiente, coeficientes_ordenados.index(coeficiente), ordem_derivada)
     if len(derivada) > 1:
         coeficiente = int(derivada[0])
         grau = int(derivada[1])
@@ -83,24 +91,25 @@ for _ in range(coeficientes_nao_nulos):
         monomio_derivado = monta_monomio(coeficiente, grau)
         derivadas.append(monomio_derivado)
 
-monomios_ordenados = ordena_polinomio(monomios)
-polinomio = '+'.join(monomios_ordenados)
-aparicoes_erradas = polinomio.count('+-')
-polinomio_FPB = polinomio.replace('+-','-',aparicoes_erradas)
-polinomio_derivadas = '+'.join(derivadas)
+if len(monomios) > 1:
+    for elemento in monomios[:]:
+        if elemento == '0' or elemento == '[]':
+            monomios.remove(elemento)
+if len(derivadas) > 1:
+    for elemento in derivadas[:]:
+        if elemento == '0':
+            derivadas.remove(elemento)
 
-"""def remove_repetidos(string_repetida):
-    if len(string_repetida) == 1:
-        return string_repetida
-    elif string_repetida[:1] != '0':
-        return string_repetida
-    else:
-        if string_repetida[:1] == '0':
-            return remove_repetidos(string_repetida[1:])"""
 
-polinomio_FPB = polinomio_FPB.replace('0+','',polinomio_FPB.count('0'))
-polinomio_derivadas_corrigido = polinomio_derivadas.replace('0+','',polinomio_derivadas.count('0'))   
+polinomio = '+'.join(monomios)
+aparicoes_erradas_polinomio = polinomio.count('+-')
+polinomio_FPB = polinomio.replace('+-','-',aparicoes_erradas_polinomio)
+
+polinomio_derivado = '+'.join(derivadas)
+aparicoes_erradas_derivadas = polinomio_derivado.count('+-')
+polinomio_derivado_FPB = polinomio_derivado.replace('+-','-',aparicoes_erradas_derivadas)
+
 
 print(f'A derivada {ordem_derivada} do polinômio {polinomio_FPB} é')
-print(polinomio_derivadas_corrigido)
+print(polinomio_derivado_FPB)
 
