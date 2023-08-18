@@ -43,3 +43,5 @@ for chave in dados_pessoais:
     print(chave)
 for chave, valor in dados_pessoais.items():
     print(chave, valor)
+
+
