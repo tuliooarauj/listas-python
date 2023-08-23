@@ -42,10 +42,14 @@ def cria_num_concatenacao(dialeto, dialetos): #string e dicionario
         lista_aux.append(str(numero_equivalente))
     numero_formado = ''.join(lista_aux)
     return numero_formado
-
+filas = {}
+i = 1
 possivel = True
+j=1
 qtd_pessoas = int(input())
 for pessoas in range(qtd_pessoas):
+    if j == len(filas):
+        j = 1
     dialeto = input()
     if verifica_concatenacao(dialeto):
         numero = remove_zeros_esquerda(cria_num_concatenacao(dialeto, dialetos))
@@ -54,10 +58,14 @@ for pessoas in range(qtd_pessoas):
 
     if pessoas == 0 or numero == 0:
         fila = cria_fila()
+        filas.update({i: fila})
+        i += 1
     else:
-        if verifica_possibilidade(dialetos[dialeto], fila):
-            pos = len(fila)+1
-            fila.update({pos: dialetos[dialeto]})
+        if len(filas) > 1:
+            j+=1
+        if verifica_possibilidade(numero, filas[j]):
+            pos = len(filas[j])+1
+            filas[j].update({pos: numero})
         else:
             possivel = False
 
@@ -65,3 +73,5 @@ if possivel:
     print('YES')
 else:
     print('NO')
+
+    
