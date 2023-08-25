@@ -1,6 +1,8 @@
-string = 'horas acabadas'
+dicionario = {
+    'Rodrigo Goes': {'Biceps': '', 'Treino': '', 'Frequencia': '', 'BF': '', 'Suor': ''}, 
+    'Rayane Gomes': {'Biceps': '', 'Treino': '', 'Frequencia': '', 'BF': '', 'Suor': ''}}
 
-valor = string.split()[0]
+dicionario['Rodrigo Goes']['Biceps'] = '35cm'
 
-print(valor)
 
+print(dicionario)
