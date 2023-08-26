@@ -20,14 +20,6 @@ def verifica_possibilidade(qtd_frente, fila):
     else:
         return False
 
-def remove_zeros_esquerda(numero):
-    if len(numero) > 1:
-        if int(numero[:1]) != 0:
-            return int(numero)
-        else:
-            return remove_zeros_esquerda(numero[1:])
-    return int(numero)
-
 def verifica_concatenacao(dialeto):
     if '+' in dialeto:
         return True
@@ -42,21 +34,29 @@ def cria_num_concatenacao(dialeto, dialetos): #string e dicionario
         lista_aux.append(str(numero_equivalente))
     numero_formado = ''.join(lista_aux)
     return numero_formado
+
+def cria_fila(tamanho_fila):
+    for posicao in range(tamanho_fila):
+        filas[posicao] = []
+
 filas = {}
 i = 1
 possivel = True
 j=1
 qtd_pessoas = int(input())
-for pessoas in range(qtd_pessoas):
-    if j == len(filas):
-        j = 1
+for pessoas in range(1, qtd_pessoas):
     dialeto = input()
     if verifica_concatenacao(dialeto):
-        numero = remove_zeros_esquerda(cria_num_concatenacao(dialeto, dialetos))
+        numero = int((cria_num_concatenacao(dialeto, dialetos)))
     else:
-        numero = remove_zeros_esquerda(str(dialetos[dialeto]))
+        numero = int((dialetos[dialeto]))
 
-    if pessoas == 0 or numero == 0:
+    cria_fila(qtd_pessoas)
+    filas[numero][]
+
+
+
+    '''if pessoas == 0 or numero == 0:
         fila = cria_fila()
         filas.update({i: fila})
         i += 1
@@ -67,7 +67,7 @@ for pessoas in range(qtd_pessoas):
             pos = len(filas[j])+1
             filas[j].update({pos: numero})
         else:
-            possivel = False
+            possivel = False'''
 
 if possivel:
     print('YES')
