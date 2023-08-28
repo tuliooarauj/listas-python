@@ -10,9 +10,6 @@ dialetos = {
     "Não é mesmo?" : 8,
     "Rodrigo Goes out" : 9}
 
-def cria_fila():
-    fila = {1: 0} #key = posicao fila, value = qtd_frente
-    return fila
 
 def verifica_possibilidade(qtd_frente, fila):
     if qtd_frente == len(fila):
@@ -35,43 +32,54 @@ def cria_num_concatenacao(dialeto, dialetos): #string e dicionario
     numero_formado = ''.join(lista_aux)
     return numero_formado
 
-def cria_fila(tamanho_fila):
-    for posicao in range(tamanho_fila):
-        filas[posicao] = []
+def cria_n_fatoriais(numero):
+    lista = []
+    for fat in range(numero,-1,-1):
+        lista.append(fat)
+    return lista
 
-filas = {}
-i = 1
-possivel = True
-j=1
+def verifica_possibilidade(lista_posicoes, numero):
+    fatorial_n = cria_n_fatoriais(numero)
+    for elemento in fatorial_n:
+        if elemento in lista_posicoes:
+            fatorial_presente = True
+        else:
+            return False
+    if fatorial_presente:
+        return True
+
+def cria_fila(num_fila):
+    return {num_fila: []}
+
+
+filas = []
+
+nao_possivel = 0
+lista_posicoes = {}
 qtd_pessoas = int(input())
-for pessoas in range(1, qtd_pessoas):
+
+for pessoas in range(qtd_pessoas):
     dialeto = input()
     if verifica_concatenacao(dialeto):
         numero = int((cria_num_concatenacao(dialeto, dialetos)))
     else:
         numero = int((dialetos[dialeto]))
-
-    cria_fila(qtd_pessoas)
-    filas[numero][]
-
-
-
-    '''if pessoas == 0 or numero == 0:
-        fila = cria_fila()
-        filas.update({i: fila})
-        i += 1
+ 
+    sublistas = lista_posicoes.values()
+    if numero in sublistas:
+        i+=1
+        nova_fila = []
+        nova_fila.append(numero)
+        lista_posicoes[i] = nova_fila
     else:
-        if len(filas) > 1:
-            j+=1
-        if verifica_possibilidade(numero, filas[j]):
-            pos = len(filas[j])+1
-            filas[j].update({pos: numero})
-        else:
-            possivel = False'''
-
-if possivel:
-    print('YES')
-else:
-    print('NO')
-
+        i = 1
+        filas.append(numero)
+        lista_posicoes[i] = filas
     
+    if verifica_possibilidade(lista_posicoes, numero) == False:
+        nao_possivel += 1
+   
+if nao_possivel > 0:
+    print('NO')
+else:
+    print('YES')
