@@ -7,12 +7,14 @@ def converte_para_trigramas(linha, trigrama):
 i = 0
 linha_atual = ''
 texto = {}
+texto_original = {}
 
 while linha_atual != 'end_of_file':
     linha_atual = input().lower()
     if not linha_atual == 'end_of_file':
         linha_atual_convertida = converte_para_trigramas(linha_atual, [])
         texto.update({i: linha_atual_convertida})
+        texto_original.update({i: linha_atual})
     i += 1
 
 linhas_buscadas = {}
@@ -25,9 +27,17 @@ for j in range(qtd_buscas):
 
 linha_correspondente = []
 for linha in linhas_buscadas.values():
-    for trigrama in linha:
-        for numero_linha, linhas_texto in texto.items():
-            if trigrama in linhas_texto:
-                linha_correspondente.append(numero_linha)
+    trigrama = linha[0]
+    for numero_linha, linhas_texto in texto.items():
+        if trigrama in linhas_texto:
+            linha_correspondente.append(numero_linha)
 
-print(linha_correspondente[-1])
+linha_contida = 0
+for linha in linha_correspondente:
+    if trecho_buscado in texto_original[linha]:
+        linha_contida += 1
+        linha_resultante = linha
+if linha_contida == len(linha_correspondente): #O trecho está contido em mais de uma linha
+    print(linha_correspondente[0])
+else:
+    print(linha_resultante)
