@@ -48,15 +48,20 @@ def verifica_possibilidade(lista_posicoes, numero):
     if fatorial_presente:
         return True
 
-def cria_fila(num_fila):
-    return {num_fila: []}
+def verifica_numero_existe(numero, dicionario):
+    for num_fila, fila in dicionario.items():
+        if not numero in fila:
+            return False, num_fila
+    return True, num_fila
 
 
 filas = []
 
 nao_possivel = 0
-lista_posicoes = {}
 qtd_pessoas = int(input())
+num_fila = 1
+lista_posicoes = {}
+lista_posicoes[num_fila] = []
 
 for pessoas in range(qtd_pessoas):
     dialeto = input()
@@ -64,20 +69,23 @@ for pessoas in range(qtd_pessoas):
         numero = int((cria_num_concatenacao(dialeto, dialetos)))
     else:
         numero = int((dialetos[dialeto]))
- 
-    sublistas = lista_posicoes.values()
-    if numero in sublistas:
-        i+=1
-        nova_fila = []
-        nova_fila.append(numero)
-        lista_posicoes[i] = nova_fila
-    else:
-        i = 1
-        filas.append(numero)
-        lista_posicoes[i] = filas
+
+    resultado = verifica_numero_existe(numero, lista_posicoes)
     
-    if verifica_possibilidade(lista_posicoes, numero) == False:
-        nao_possivel += 1
+
+    if resultado[0]:
+        num_fila += 1
+        lista_posicoes[num_fila] = []
+        lista_posicoes[num_fila].append(numero)
+        if verifica_possibilidade(lista_posicoes[num_fila], numero) == False:
+            nao_possivel += 1
+    else:
+        posicao_fila = resultado[1]
+        lista_posicoes[posicao_fila].append(numero)
+        if verifica_possibilidade(lista_posicoes[posicao_fila], numero) == False:
+            nao_possivel += 1
+         
+    
    
 if nao_possivel > 0:
     print('NO')
