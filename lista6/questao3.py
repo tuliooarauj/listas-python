@@ -43,25 +43,36 @@ def verifica_possibilidade(lista_posicoes, numero):
     for elemento in fatorial_n:
         if elemento in lista_posicoes:
             fatorial_presente = True
+            lista_posicoes.remove(elemento)
         else:
             return False
     if fatorial_presente:
         return True
 
-def verifica_numero_existe(numero, dicionario):
-    for num_fila, fila in dicionario.items():
-        if not numero in fila:
-            return False, num_fila
-    return True, num_fila
-
+def teste_final_possibilidade(lista_posicoes):
+    nao_possivel = 0
+    if lista_posicoes == [] and nao_possivel == 0:
+        return True
+    elif lista_posicoes == [] and nao_possivel > 0:
+        return False
+    else:
+        lista_aux = []
+        for element in lista_posicoes:
+            element = str(element)
+            lista_aux.append(element)
+        lista_aux = ' '.join(lista_aux)
+        numero = int(lista_aux[:1])
+        if verifica_possibilidade(lista_posicoes, numero) == False:
+            nao_possivel += 1
+        else:
+            return teste_final_possibilidade(lista_posicoes)
+        
 
 filas = []
-
+i = 1
 nao_possivel = 0
+lista_posicoes = []
 qtd_pessoas = int(input())
-num_fila = 1
-lista_posicoes = {}
-lista_posicoes[num_fila] = []
 
 for pessoas in range(qtd_pessoas):
     dialeto = input()
@@ -69,25 +80,11 @@ for pessoas in range(qtd_pessoas):
         numero = int((cria_num_concatenacao(dialeto, dialetos)))
     else:
         numero = int((dialetos[dialeto]))
+    lista_posicoes.append(numero)
 
-    resultado = verifica_numero_existe(numero, lista_posicoes)
-    
+lista_posicoes.sort(reverse=True)
 
-    if resultado[0]:
-        num_fila += 1
-        lista_posicoes[num_fila] = []
-        lista_posicoes[num_fila].append(numero)
-        if verifica_possibilidade(lista_posicoes[num_fila], numero) == False:
-            nao_possivel += 1
-    else:
-        posicao_fila = resultado[1]
-        lista_posicoes[posicao_fila].append(numero)
-        if verifica_possibilidade(lista_posicoes[posicao_fila], numero) == False:
-            nao_possivel += 1
-         
-    
-   
-if nao_possivel > 0:
-    print('NO')
-else:
+if teste_final_possibilidade(lista_posicoes) == True:
     print('YES')
+else:
+    print('NO')
