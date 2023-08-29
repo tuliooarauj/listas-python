@@ -1,18 +1,11 @@
 def converte_para_trigramas(linha, trigrama = None):
     if trigrama is None:
         trigrama = []
-
-    if len(linha) == 3:
-        return trigrama
-    
-    trigrama.append(linha[:3])
-    return converte_para_trigramas(linha[1:], trigrama)
-
-def testa_tam_string(string):
-    if len(string) > 120:
-        return string[:120]
+    while len(linha) > 3:
+        trigrama.append(linha[:3])
+        linha = linha[1:]
     else:
-        return string
+        return trigrama
 
 i = 0
 linha_atual = ''
@@ -21,7 +14,6 @@ texto_original = {}
 
 while linha_atual != 'end_of_file':
     linha_atual = input().lower()
-    #linha_atual = testa_tam_string(linha_atual)
     if not linha_atual == 'end_of_file':
         linha_atual_convertida = converte_para_trigramas(linha_atual)
         texto.update({i: linha_atual_convertida})
@@ -34,7 +26,6 @@ qtd_buscas = int(input())
 
 for j in range(qtd_buscas):
     trecho_buscado = input().lower()
-    #trecho_buscado = testa_tam_string(trecho_buscado)
     trecho_buscado_convertido = converte_para_trigramas(trecho_buscado)
     linhas_buscadas.update({j: trecho_buscado_convertido})
     linhas_buscadas_original.update({j: trecho_buscado})
@@ -53,7 +44,8 @@ for trecho_buscado in linhas_buscadas_original.values():
     for linha in linha_correspondente:
         if trecho_buscado in texto_original[linha]:
             linha_contida += 1
-            linha_resultante.append(linha)
+            if not linha_contida > 1:
+                linha_resultante.append(linha)
     if linha_contida == 0:
         linha_resultante.append(-1)
 
