@@ -55,13 +55,8 @@ def teste_final_possibilidade(lista_posicoes):
         return True
     elif lista_posicoes == [] and nao_possivel > 0:
         return False
-    else:
-        lista_aux = []
-        for element in lista_posicoes:
-            element = str(element)
-            lista_aux.append(element)
-        lista_aux = ' '.join(lista_aux)
-        numero = int(lista_aux[:1])
+    else:   
+        numero = int(lista_posicoes[0])
         if verifica_possibilidade(lista_posicoes, numero) == False:
             nao_possivel += 1
         else:
