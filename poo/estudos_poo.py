@@ -2,6 +2,7 @@ class Conta:
     def __init__(self, numero, saldo):
         self.numero = numero
         self.saldo = saldo
+        #self._saldo = saldo --> o '_' é utilizado para determinar que o atributo é privado.
 
     def creditar(self, saldo):
         self.saldo += saldo
