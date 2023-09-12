@@ -4,9 +4,14 @@ class Conta:
     _num_contas = 1
 
     def __init__(self, saldo):
-        self._numero = Conta._num_contas
+        self._numero = Conta.gera_novo_numero()
         self._saldo = saldo
         Conta._num_contas += 1 #Incrementando o numero de contas sempre que um objeto for criado
+
+    #método de Classe -> Global
+    @classmethod
+    def gera_novo_numero(cls):
+        return cls._num_contas * 1234
 
     def creditar(self, valor):
         self._saldo += valor
