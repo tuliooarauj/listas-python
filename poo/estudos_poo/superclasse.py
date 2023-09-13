@@ -51,7 +51,27 @@ class Poupanca(Conta):
     def render_juros(self):
         super().creditar(self._saldo * self._taxa_juros)
 
-poupanca = Poupanca(100, 0.10)
-poupanca.creditar(20)
-poupanca.render_juros()
-print(poupanca.__dict__)
+
+class Banco:
+    def __init__(self):
+        self._contas = {}
+
+    @property
+    def contas(self):
+        return self._contas
+    
+    def existe_conta(self, numero):
+        if self._contas.get(numero, None) is None:
+            return False
+        else:
+            return True
+    
+    def get_conta(self, numero):
+        if self.existe_conta(numero):
+            return self._contas.get(numero)
+        else:
+            print(f'Conta {numero} inexistente')
+    
+    def cadastrar_conta(self, conta):
+        if self.existe_conta(conta.numero):
+        
