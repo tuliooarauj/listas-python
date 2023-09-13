@@ -103,3 +103,18 @@ class Banco:
         else:
             print(f'A conta nº {conta.numero} não existe.')
 
+
+banco = Banco()
+conta = Conta(100)
+
+banco.cadastrar_conta(conta)
+print('Conta cadastrada!')
+print(banco.get_conta(conta.numero).__dict__)
+
+banco.debitar(conta.numero, 20)
+print('\nDebitou R$ 20 da conta')
+print(banco.get_conta(conta.numero).__dict__)
+
+banco.creditar(conta.numero, 100)
+print('\nCreditou R$ 100 na Conta')
+print(banco.get_conta(conta.numero).__dict__)
