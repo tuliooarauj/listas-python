@@ -74,4 +74,32 @@ class Banco:
     
     def cadastrar_conta(self, conta):
         if self.existe_conta(conta.numero):
-        
+            print(f'A conta nº {conta.numero} já existe.')
+        else:
+            self._contas.update({conta.numero: conta})
+
+    def creditar(self, numero, valor):
+        if self.existe_conta(numero):
+            conta = self.get_conta(numero)
+            conta.creditar(valor)
+        else: 
+            print(f'A conta nº {conta.numero} não existe.')
+
+    def debitar(self, numero, valor):
+        if self.existe_conta(numero):
+            conta = self.get_conta(numero)
+            conta.debitar(valor)
+        else:
+            print(f'A conta nº {conta.numero} não existe.')
+
+    def render_juros(self, numero):
+        if self.existe_conta(numero):
+            conta = self.get_conta(numero)
+            #Verificando se o obj conta é da classe Poupanca
+            if isinstance(conta, Poupanca):
+                conta.render_juros()
+            else:
+                print(f'Conta nº {conta.numero} não é do tipo poupança.')
+        else:
+            print(f'A conta nº {conta.numero} não existe.')
+
